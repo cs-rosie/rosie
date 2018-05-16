@@ -2,9 +2,10 @@ const path = require('path');
 
 module.exports = {
   mode: 'none',
-  entry: './index.js',
+  entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
+    publicPath: '/dist/',
     filename: 'bundle.js'
   },
   module: {
@@ -15,8 +16,8 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel-loader',
         query: {
-          presets: ['es2015', 'react']
-          }
+          presets: ['es2015', 'react', 'stage-2']
+        }
       },
       {
         test: /\.css$/,
@@ -33,7 +34,6 @@ module.exports = {
     ]
   },
   devServer: {
-    publicPath: '/dist',
     hot: true,
     port: 8080
   }
