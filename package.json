@@ -1,0 +1,29 @@
+{
+  "name": "rosie",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cs-rosie/rosie.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cs-rosie/rosie/issues"
+  },
+  "homepage": "https://github.com/cs-rosie/rosie#readme",
+  "devDependencies": {
+    "nodemon": "^1.17.4"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2"
+  }
+}
