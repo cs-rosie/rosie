@@ -42,6 +42,21 @@ let event = {
   // DOM buttons
   let authorizeButton = document.getElementById('authorize-button');
   let createNewEvent = document.getElementById('newEvent-button');
+  let sendSlackMessage = document.getElementById('sendMessage');
+  let textInput = document.getElementById('textInput').value;
+
+
+  sendSlackMessage.onclick = () => {
+    fetch('/sendSlack', {
+        method: 'POST', 
+        body: JSON.stringify({test: 'hello Pauline'}), // data can be `string` or {object}!
+        headers: new Headers({
+          'Content-Type': 'application/json'
+        })
+      }).then(res => res.json())
+      .catch(error => console.error('Error:', error))
+      .then(response => console.log('Success:', response));
+  }
 
   // On load, called to load the OAuth2.0 library and API client library.
   let handleClientLoad = () =>{
@@ -107,6 +122,6 @@ let event = {
       'maxResults': 30,
       'orderBy': 'startTime'
     }).then((res) => {
-      console.log(res, '<===== this is the response');
+      console.log(res.result.items, '<===== this is the response');
     });
   }
