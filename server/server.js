@@ -8,10 +8,6 @@ const PORT = 8080;
 // const db = `postgres://icgdoqir:DS6zvF0G1MJijrBwz0y7UvGdt55t0x5x@pellefant.db.elephantsql.com:5432/icgdoqir`;
 const app = express();
 
-app.use('/vote', vote);
-app.use('/song', song);
-
-
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
