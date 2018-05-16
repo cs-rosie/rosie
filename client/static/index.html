@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Rosie</title>
+</head>
+
+<body>
+  <button id="authorize-button">Authorize</button>
+  <button id="newEvent-button">Create New Event</button>
+  <input id="textInput" type="text" name="slackMessage">
+  <button id="sendMessage">sendMessage</button>
+</body>
+
+<script src="./index.js"></script>
+<script async defer src="https://apis.google.com/js/api.js" onload="this.onload=function(){}; handleClientLoad()" onreadystatechange="if (this.readyState === 'complete') this.onload()">
+</script>
+</html>
