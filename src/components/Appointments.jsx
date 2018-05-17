@@ -1,4 +1,5 @@
 import React from 'react';
+import Appointment from './Appointment.jsx';
 
 const Appointments = (props) => {
   const appointments = [];
