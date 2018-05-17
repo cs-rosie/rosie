@@ -1,12 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import MainContent from './mainContainer.jsx';
-
-const mapStateToProps = store => ({
-});
-
-const mapDispatchToProps = dispatch => ({
-});
+import MainContent from './MainContainer';
 
 const App = () =>
   (
@@ -15,4 +8,4 @@ const App = () =>
     </div>
   );
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
