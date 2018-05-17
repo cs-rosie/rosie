@@ -8,25 +8,31 @@ module.exports = {
    */
   addEvents: (req, res) => {
     const calObjs = req.body.map(((obj) => {
-      let result = {};
-      let invitee;
-      let email;
-      result.start = obj.start.dateTime;
-      result.end = obj.end.dateTime;
-      console.log(obj.description);
+      const result = {};
       result.description = obj.description;
-      result.summary = obj.summary;
-      let inviteeData = calUtils.extract(JSON.stringify(result.description));
-      if (inviteeData.invitee) {
-        result.invitee = inviteeData.invitee[1];
+      const inviteeData = calUtils.getInviteeData(JSON.stringify(obj.description));
+      if (inviteeData.firstName) {
+        result.firstName = inviteeData.firstName;
+      }
+      if (inviteeData.lastName) {
+        result.lastName = inviteeData.lastName;
       }
       if (inviteeData.email) {
         result.email = inviteeData.email[1];
       }
-      // console.log( {start, end, description, summary, invitee, email})
+      if (obj.summary) {
+        result.summary = obj.summary;
+        result.type = calUtils.getEventType(obj.summary);
+      }
+      if (obj.attendees) {
+        result.interviewer = calUtils.getInterviewer(obj.attendees);
+      }
+      result.start = new Date(obj.start.dateTime);
+      result.end = new Date(obj.end.dateTime);
+      console.log(result.start);
       return result;
     }));
-    console.log('line 15 calCtrl', calObjs);
+    // console.log('line 15 calCtrl', Object.entries(calObjs));
     res.send('Successfully retrieved items from /addEvents');
   },
 };

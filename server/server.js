@@ -3,11 +3,13 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const calController = require('./controllers/calController');
 const slackController = require('./controllers/slackController');
+const db = require('./db');
 
 const PORT = 8080;
 const app = express();
 
 app.use('/', express.static(path.join(__dirname, '../client/static')));
+// app.use('/', express.static(path.join(__dirname, '../dist')))
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
