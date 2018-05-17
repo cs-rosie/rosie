@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actionCreators from '../Actions/actionCreators';
+import PublicEvent from './PublicEvents.jsx';
+import Vendors from './vendors.jsx'
 
 const mapStateToProps = store => ({
+  // events: store.data.events,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -23,6 +26,8 @@ class MainContainer extends Component {
     return (
       <div id="Events">
         I am here!!!
+        <PublicEvent />
+        <Vendors />
       </div> 
     );
   }
