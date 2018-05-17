@@ -52,8 +52,9 @@ module.exports = {
     });
   },
   /**
-   * @name: checkIn
+   * @name: intCheckIn
    * @params: req.body.firstName, req.body.lastName
+   * @example req.body: { "firstName":"Benjamin", "lastName", "Gummelt"}
    */
   intCheckIn: (req, res, next) => {
     if (!req.body.firstName || !req.body.lastName) {
