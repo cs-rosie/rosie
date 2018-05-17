@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actionCreators from '../Actions/actionCreators';
+import AppointmentContainer from './AppointmentContainer';
 
 const mapStateToProps = store => ({
 });
@@ -22,7 +23,7 @@ class MainContainer extends Component {
   render() {
     return (
       <div id="Events">
-        I am here!!!
+        <AppointmentContainer />
       </div> 
     );
   }
