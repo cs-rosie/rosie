@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import * as actionCreators from '../Actions/actionCreators';
 import PublicEvent from './PublicEvents.jsx';
 import Vendors from './vendors.jsx'
+import AppointmentContainer from './AppointmentContainer';
 
 const mapStateToProps = store => ({
   // events: store.data.events,
@@ -28,6 +29,9 @@ class MainContainer extends Component {
         I am here!!!
         <PublicEvent />
         <Vendors />
+=======
+        I am here in Main Container!!!
+        <AppointmentContainer />
       </div> 
     );
   }
