@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actionCreators from '../Actions/actionCreators';
+import PublicEvent from './PublicEvents.jsx';
+import Vendors from './vendors.jsx'
 import AppointmentContainer from './AppointmentContainer';
 
 const mapStateToProps = store => ({
+  // events: store.data.events,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -23,11 +26,12 @@ class MainContainer extends Component {
   render() {
     return (
       <div id="Events">
-<<<<<<< HEAD:src/containers/mainContainer.jsx
-        I am here in Main Container!!!
+        I am here!!!
+        <PublicEvent />
+        <Vendors />
 =======
+        I am here in Main Container!!!
         <AppointmentContainer />
->>>>>>> 00d8b290e4b4472e1841489c0aa49b9fd7ee8a81:src/containers/MainContainer.js
       </div> 
     );
   }
