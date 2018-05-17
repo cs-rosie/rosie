@@ -23,11 +23,7 @@ class MainContainer extends Component {
   render() {
     return (
       <div id="Events">
-<<<<<<< HEAD:src/containers/mainContainer.jsx
-        I am here in Main Container!!!
-=======
         <AppointmentContainer />
->>>>>>> 00d8b290e4b4472e1841489c0aa49b9fd7ee8a81:src/containers/MainContainer.js
       </div> 
     );
   }
