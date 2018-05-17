@@ -14,7 +14,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => res.send('ok'));
-app.post('/addEvents', calController.addEvents);
-app.post('/sendSlack', slackController.sendSlack);
+app.post('/addEvents', calController.addEvents, calController.getAllEvents);
+app.post('/sendSlack', slackController.sendGeneralSlack);
+app.post('/intCheckIn', calController.intCheckIn, slackController.sendIntSlack);
+// for hard parts, requires req.body.message
+app.post('/pubCheckIn', slackController.sendGeneralSlack);
+// for deliveries, requires req.body.message
+app.post('otherCheckIn', slackController.sendGeneralSlack);
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}.`));
