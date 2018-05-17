@@ -1,25 +1,7 @@
-// This is the event object we need to create to add to GOOGLE Calendar
-let event = {
-  summary: 'New Test100',
-  location: '800 Howard St., San Francisco, CA 94103',
-  description: "A chance to hear more about Google's developer products.",
-  start: {
-    dateTime: '2018-05-16T09:00:00-07:00',
-    timeZone: 'America/Los_Angeles',
-  },
-  end: {
-    dateTime: '2018-05-17T17:00:00-07:00',
-    timeZone: 'America/Los_Angeles',
-  },
-  // 'recurrence': [
-  //   'RRULE:FREQ=DAILY;COUNT=2'
-  // ],
-  attendees: [{ email: 'lpage@example.com' }, { email: 'sbrin@example.com' }],
-  reminders: {
-    useDefault: false,
-    overrides: [{ method: 'email', minutes: 24 * 60 }, { method: 'popup', minutes: 10 }],
-  },
-};
+// document.addEventListener("DOMContentLoaded", function(event) {
+//   handleAuthClick()
+//   console.log("DOM fully loaded and parsed");
+// });
 
 // Client ID and API key from the Developer Console
 let CLIENT_ID = '379439708310-f3atk4bffsnr1u8rqhmk8kpfu5jonfje.apps.googleusercontent.com';
@@ -34,9 +16,7 @@ let SCOPES = ' https://www.googleapis.com/auth/calendar';
 
 // DOM buttons
 let authorizeButton = document.getElementById('authorize-button');
-let createNewEvent = document.getElementById('newEvent-button');
 let sendSlackMessage = document.getElementById('sendMessage');
-let textInput = document.getElementById('textInput').value;
 
 sendSlackMessage.onclick = () => {
   fetch('/sendSlack', {
@@ -74,15 +54,7 @@ let initClient = () => {
       // Passing in the evaluated result of OAuth verification boolean value
       printCalendarObj(gapi.auth2.getAuthInstance().isSignedIn.get());
       // Uses events.insert method on google api to insert event object to primary calendar
-      createNewEvent.onclick = () => {
-        let request = gapi.client.calendar.events.insert({
-          calendarId: 'primary',
-          resource: event,
-        });
-
-        // calls the request funciton
-        request.execute(event => {});
-      };
+      
     });
 };
 
