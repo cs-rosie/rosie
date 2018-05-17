@@ -9,8 +9,8 @@ module.exports = {
    *   summary, attendees, start, end
    */
   addEvents: (req, res, next) => {
-    console.log('inside add events');
-    const calArr = req.body.map(obj => {
+    console.log('req.body is here' , req.body);
+    const calArr = req.body.map((obj) => {
       const result = {};
       result.description = obj.description;
       const inviteeData = calUtils.getInviteeData(JSON.stringify(obj.description));
@@ -41,14 +41,15 @@ module.exports = {
         res.status(500).send('Failed to add calObj to db');
         throw new Error('Post Message Failed:', err);
       }
-      console.log('Added calObj to database', result);
+      // console.log('Added calObj to database', result);
     });
     next();
   },
   getAllEvents: (req, res) => {
-    const calObj = db.find({}, err => {
+    db.find({}, (err, calObj) => {
       if (err) res.status(500).send('Failed to find calObj in db');
-      res.send('ok');
+      console.log(calObj);
+      res.json(calObj);
     });
   },
   /**

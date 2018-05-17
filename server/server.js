@@ -28,7 +28,7 @@ app.get('/', (req, res) => res.send('ok'));
 //   end: 2018-05-18T00:00:00.000Z,
 //   __v: 0 }
 app.post('/addEvents', calController.addEvents, calController.getAllEvents);
-
+app.get('/getAllEvents', calController.getAllEvents);
 app.post('/sendSlack', slackController.sendGeneralSlack);
 // example req.body: { "firstName":"Benjamin", "lastName", "Gummelt"}
 app.post('/intCheckIn', calController.intCheckIn, slackController.sendIntSlack);

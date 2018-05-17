@@ -1,26 +1,3 @@
-// This is the event object we need to create to add to GOOGLE Calendar
-let event = {
-  summary: 'New Test100',
-  location: '800 Howard St., San Francisco, CA 94103',
-  description: "A chance to hear more about Google's developer products.",
-  start: {
-    dateTime: '2018-05-16T09:00:00-07:00',
-    timeZone: 'America/Los_Angeles',
-  },
-  end: {
-    dateTime: '2018-05-17T17:00:00-07:00',
-    timeZone: 'America/Los_Angeles',
-  },
-  // 'recurrence': [
-  //   'RRULE:FREQ=DAILY;COUNT=2'
-  // ],
-  attendees: [{ email: 'lpage@example.com' }, { email: 'sbrin@example.com' }],
-  reminders: {
-    useDefault: false,
-    overrides: [{ method: 'email', minutes: 24 * 60 }, { method: 'popup', minutes: 10 }],
-  },
-};
-
 // Client ID and API key from the Developer Console
 let CLIENT_ID = '379439708310-f3atk4bffsnr1u8rqhmk8kpfu5jonfje.apps.googleusercontent.com';
 let API_KEY = 'AIzaSyDTkHmq6OTj3ZvL_3WPk_XXGjEn-jAy11c';
@@ -87,7 +64,7 @@ let initClient = () => {
 };
 
 // Prints calendarObj if arguments is true
-let printCalendarObj = (isSignedIn) => {
+let printCalendarObj = isSignedIn => {
   console.log('PrintCalendarObj ran');
 
   if (isSignedIn) {
@@ -119,13 +96,29 @@ let listUpcomingEvents = () => {
       orderBy: 'startTime',
     })
     .then((res) => {
+      // fetch('/addEvents', {
+      //   method: 'POST',
+      //   body: JSON.stringify(res.result.items), // data can be `string` or {object}!
+      //   headers: new Headers({
+      //     'Content-Type': 'application/json',
+      //   }),
+      // });
+
       fetch('/addEvents', {
         method: 'POST',
         body: JSON.stringify(res.result.items), // data can be `string` or {object}!
         headers: new Headers({
           'Content-Type': 'application/json',
         }),
-      });
-      console.log(res.result.items, '<===== this is the response');
+      })
+        .then(res => res.json())
+        .catch(error => console.error('Error:', error))
+        .then(response => console.log('Success fetching:', response));
+      // console.log(res.result.items, '<===== this is the response');
     });
 };
+
+// $(document).ready(() => {
+//   console.log('ready');
+//   handleAuthClick();
+// });
