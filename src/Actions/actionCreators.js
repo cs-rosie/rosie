@@ -15,7 +15,7 @@ export const checkOut = appointment => ({
   appointment
 });
 
-export const checkAppt = user => ({
+export const checkAppt = email => ({
   type: types.CHECK_APPOINTMENT,
-  user
+  email
 });

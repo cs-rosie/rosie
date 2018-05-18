@@ -19,8 +19,8 @@ class AppointmentContainer extends Component{
     super(props);
     this.findUserAppointment = this.findUserAppointment.bind(this);
   }
-  findUserAppointment = user => {
-    actions.checkAppt(user);
+  findUserAppointment = email => {
+    this.props.actions.checkAppt(email);
   }
 
   render() {

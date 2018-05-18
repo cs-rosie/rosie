@@ -26,11 +26,8 @@ class MainContainer extends Component {
   render() {
     return (
       <div id="Events">
-        I am here!!!
         <PublicEvent />
         <Vendors />
-=======
-        I am here in Main Container!!!
         <AppointmentContainer />
       </div> 
     );

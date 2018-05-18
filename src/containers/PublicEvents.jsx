@@ -4,31 +4,25 @@ import { bindActionCreators } from 'redux';
 import * as actionCreators from '../Actions/actionCreators';
 import Event from '../components/event.jsx';
 
+const mapStateToProps = store => ({
+  events: store.data.events
+});
 
-const mapStateToProps = (store) => {
-  return store.data;
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators(actionCreators, dispatch)
-};
-
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators(actionCreators, dispatch)
+});
 
 class PublicEvents extends Component {
-
-  componentDidMount() {
-    console.log('EVENTPROPS', this.props.events);
-  }
-
   render() {
-    let eventList = [];
-    for(let i = 0; i < this.props.events.length; i++){
-      eventList.push(<Event eventName={this.props.events[i]}/>)
-    }
+    const eventList = [];
+    for (let i = 0; i < this.props.events.length; i += 1) {
+      eventList.push(<Event event={ this.props.events[i] } key={i} />)
+    };
+
     return (
-      <div>
+      <div id="publicEvents">
         <h3>Public Events Container</h3>
-        {eventList}
+        { eventList }
       </div>
     );
   }

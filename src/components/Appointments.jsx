@@ -4,7 +4,7 @@ import Appointment from './Appointment.jsx';
 const Appointments = (props) => {
   const appointments = [];
   for (let i = 0; i < props.appointments.length; i += 1) {
-    appointments.push(`<Appointment appointment=${props.appointments[i]} />`);
+    appointments.push(<Appointment appointment={props.appointments[i]} key={i} />);
   }
   return (
     <div id="Appointments">
