@@ -5,7 +5,7 @@ const calController = require('./controllers/calController');
 const slackController = require('./controllers/slackController');
 const db = require('./db');
 
-const PORT = 8080;
+const PORT = 8000;
 const app = express();
 
 app.use('/', express.static(path.join(__dirname, '../client/static')));

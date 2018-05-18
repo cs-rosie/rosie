@@ -56,12 +56,11 @@ module.exports = {
    * @params: req.body.firstName, req.body.lastName
    */
   intCheckIn: (req, res, next) => {
-    if (!req.body.firstName || !req.body.lastName) {
+    if (!req.body.email) {
       return res.status(400).send('Did not have valid body');
     }
-    const firstName = req.body.firstName;
-    const lastName = req.body.lastName;
-    db.find({ firstName, lastName }, null, (err, appt) => {
+    const email = req.bodye.mail;
+    db.find({ email }, null, (err, appt) => {
       if (err) res.status(500).send('Failed to find calObj in db');
       console.log(appt);
       res.locals.appt = appt;
