@@ -2,7 +2,7 @@ const { WebClient } = require('@slack/client');
 const bodyParser = require('body-parser');
 
 // An access token (from your Slack app or custom integration - xoxp, xoxb, or xoxa)
-const token = 'xoxp-365508166806-364753788149-365238338544-308dd7ac449e75ba76063d3cadd19656';
+const token = 'xoxp-365508166806-364753788149-365435271937-ebed8ba8ba5b5253acbd678c3933c143';
 const web = new WebClient(token);
 
 const channel = 'CAQFDSJBV';
