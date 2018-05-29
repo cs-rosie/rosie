@@ -71,27 +71,25 @@ const initialState = {
 };
 
 function appointmentReducer(state = initialState, action) {
-  let appointments;
   let currentAppointments;
   switch (action.type) {
-    case types.SYNC_DB:
-      appointments = action.data;
+    case types.SYNC_DB: {
+      const appointments = action.data;
       return {
         ...state,
         appointments
       };
-    case types.CHECK_APPOINTMENT:
-      appointments = state.appointments;
-      
-      let email = action.email;
-      currentAppointments = appointments.filter(item => item.email == email);
-      console.log(currentAppointments);
+    }
+    case types.CHECK_APPOINTMENT: {
+      const { appointments } = state;
+      const { email } = action;
+      currentAppointments = appointments.filter(item => item.email === email);
       return {
         ...state,
         currentAppointments
       };
+    }
     case types.CHECK_IN:
-      
     default:
       return state;
   }

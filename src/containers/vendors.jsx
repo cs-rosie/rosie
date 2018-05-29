@@ -12,7 +12,6 @@ const mapDispatchToProps = dispatch => ({
   action: bindActionCreators(actionCreators, dispatch),
 });
 
-
 class Vendors extends Component {
   render() {
     let vendorsList = [];
