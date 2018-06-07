@@ -34,22 +34,22 @@ let SCOPES = ' https://www.googleapis.com/auth/calendar';
 
 // DOM buttons
 let authorizeButton = document.getElementById('authorize-button');
-let createNewEvent = document.getElementById('newEvent-button');
-let sendSlackMessage = document.getElementById('sendMessage');
-let textInput = document.getElementById('textInput').value;
+// let createNewEvent = document.getElementById('newEvent-button');
+// let sendSlackMessage = document.getElementById('sendMessage');
+// let textInput = document.getElementById('textInput').value;
 
-sendSlackMessage.onclick = () => {
-  fetch('/sendSlack', {
-    method: 'POST',
-    body: JSON.stringify({ test: 'hello Pauline' }), // data can be `string` or {object}!
-    headers: new Headers({
-      'Content-Type': 'application/json',
-    }),
-  })
-    .then(res => res.json())
-    .catch(error => console.error('Error:', error))
-    .then(response => console.log('Success:', response));
-};
+// sendSlackMessage.onclick = () => {
+//   fetch('/sendSlack', {
+//     method: 'POST',
+//     body: JSON.stringify({ test: 'hello Pauline' }), // data can be `string` or {object}!
+//     headers: new Headers({
+//       'Content-Type': 'application/json',
+//     }),
+//   })
+//     .then(res => res.json())
+//     .catch(error => console.error('Error:', error))
+//     .then(response => console.log('Success:', response));
+// };
 
 // On load, called to load the OAuth2.0 library and API client library.
 let handleClientLoad = () => {
@@ -74,15 +74,7 @@ let initClient = () => {
       // Passing in the evaluated result of OAuth verification boolean value
       printCalendarObj(gapi.auth2.getAuthInstance().isSignedIn.get());
       // Uses events.insert method on google api to insert event object to primary calendar
-      createNewEvent.onclick = () => {
-        let request = gapi.client.calendar.events.insert({
-          calendarId: 'primary',
-          resource: event,
-        });
 
-        // calls the request funciton
-        request.execute(event => {});
-      };
     });
 };
 

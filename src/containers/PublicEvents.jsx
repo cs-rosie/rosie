@@ -21,7 +21,8 @@ class PublicEvents extends Component {
 
     return (
       <div id="publicEvents">
-        <h3>Public Events Container</h3>
+        <h3>Rosie</h3>
+        <h4>Codesmith's very own robot receptionist</h4>
         { eventList }
       </div>
     );

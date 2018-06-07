@@ -27,7 +27,7 @@ class AppointmentContainer extends Component{
     return (
       <div className="MainContainer">
         <CheckInForm checkIn={this.findUserAppointment} />
-        <Appointments appointments={this.props.currentAppointments} />
+        <Appointments appointments={this.props.currentAppointments} checkIn={this.props.actions.checkIn} checkOut={this.props.actions.checkOut}/>
       </div>
     )
   }

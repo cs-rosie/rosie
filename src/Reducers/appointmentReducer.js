@@ -90,6 +90,8 @@ function appointmentReducer(state = initialState, action) {
         ...state,
         currentAppointments
       };
+    case types.CHECK_IN:
+      
     default:
       return state;
   }

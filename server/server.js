@@ -9,17 +9,18 @@ const PORT = 8080;
 const app = express();
 
 app.use('/', express.static(path.join(__dirname, '../client/static')));
-// app.use('/', express.static(path.join(__dirname, '../dist')))
+app.use('/', express.static(path.join(__dirname, '../dist')));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => res.send('ok'));
 app.post('/addEvents', calController.addEvents, calController.getAllEvents);
+app.get('/getAllEvents', calController.getAllEvents)
 app.post('/sendSlack', slackController.sendGeneralSlack);
 app.post('/intCheckIn', calController.intCheckIn, slackController.sendIntSlack);
 // for hard parts, requires req.body.message
 app.post('/pubCheckIn', slackController.sendGeneralSlack);
 // for deliveries, requires req.body.message
-app.post('otherCheckIn', slackController.sendGeneralSlack);
+app.post('/otherCheckIn', slackController.sendGeneralSlack);
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}.`));

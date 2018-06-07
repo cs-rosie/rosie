@@ -46,9 +46,9 @@ module.exports = {
     next();
   },
   getAllEvents: (req, res) => {
-    const calObj = db.find({}, err => {
+    db.find({}, (err, evts) => {
       if (err) res.status(500).send('Failed to find calObj in db');
-      res.send('ok');
+      res.json(evts);
     });
   },
   /**

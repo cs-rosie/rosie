@@ -5,14 +5,14 @@ export const syncDB = data => ({
   data
 });
 
-export const checkIn = appointment => ({
+export const checkIn = email => ({
   type: types.CHECK_IN,
-  appointment
+  email
 });
 
-export const checkOut = appointment => ({
+export const checkOut = email => ({
   type: types.CHECK_OUT,
-  appointment
+  email
 });
 
 export const checkAppt = email => ({

@@ -7,9 +7,13 @@
     </head>
     <body>
         <!-- Hang React App Here -->
+        <button id="authorize-button">Authorize</button>
         <div id="root"></div>
         <!-- LOAD SCRIPTS -->
         <!-- TESTING -->
+        <script src="./index.js"></script>
+        <script async defer src="https://apis.google.com/js/api.js" onload="this.onload=function(){}; handleClientLoad()" onreadystatechange="if (this.readyState === 'complete') this.onload()">
+        </script>
         <script src="./bundle.js"></script>
     </body>
 </html>

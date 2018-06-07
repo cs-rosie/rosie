@@ -2,7 +2,7 @@ const { WebClient } = require('@slack/client');
 const bodyParser = require('body-parser');
 
 // An access token (from your Slack app or custom integration - xoxp, xoxb, or xoxa)
-const token = 'xoxp-365508166806-364753788149-365435271937-ebed8ba8ba5b5253acbd678c3933c143';
+const token = 'xoxp-365508166806-364753788149-365933617283-1d4b73ceec24308e6893fc0047da037c';
 const web = new WebClient(token);
 
 const channel = 'CAQFDSJBV';
@@ -10,7 +10,7 @@ const channel = 'CAQFDSJBV';
 // See: https://api.slack.com/methods/chat.postMessage
 
 module.exports = {
-    /**
+  /**
    * @name: sendIntSlack
    */
   sendIntSlack: (req, res) => {
@@ -22,8 +22,8 @@ module.exports = {
       .postMessage({ channel, text: slackMsg })
       .then((result) => {
         console.log(`Posting to channel ${channel} with id ${result.ts}`);
+        res.send('ok');
       })
-      .then(() => res.send('ok'))
       .catch(console.error);
   },
   /**

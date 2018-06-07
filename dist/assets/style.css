@@ -1,14 +1,23 @@
 
 body {
   margin: 0;
-}
-h3 {
+  font-family: 'Tahoma';
   text-align: center;
 }
-header {
+h3 {
+  color: palevioletred;
+  text-align: center;
+}
+
+/* header {
   height: 60px;
   background-color: lightblue;
   width: 100%;
+} */
+button {
+  border-radius: 5px;
+  border: 1px solid black;
+  padding: 5px;
 }
 #root{
   display: flex;
@@ -33,8 +42,13 @@ header {
 .vendors {
   height: 100px;
   width: 100px;
+  border: 5px solid transparent;
   float: left;
+  padding: 5px;
   margin-right: 15px;
+}
+.vendors:hover{
+  border: 5px solid dodgerblue;
 }
 .event {
   height: 50px;
@@ -46,4 +60,15 @@ header {
 }
 .mainContainer {
   width: 1000px;
+}
+.Appointment {
+  width: 100%;
+  height: 50px;
+  border: 1px solid black;
+  padding:15px;
+  margin-bottom: 5px;
+  box-shadow: 2px 2px 3px 0px rgba(85, 84, 84, 0.75);
+}
+.Appointment:hover {
+  box-shadow: 0px 0px 0px 0px rgba(85, 84, 84, 0.75);
 }

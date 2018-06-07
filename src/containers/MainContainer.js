@@ -11,17 +11,18 @@ const mapStateToProps = store => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  // actions: bindActionCreators(actionCreators, dispatch) 
+  actions: bindActionCreators(actionCreators, dispatch)
 });
 
 class MainContainer extends Component {
   componentDidMount() {
-    // fetch('http://localhost:3000/entry/1/2018-04-01')
-    // .then(res => res.json())
-    // .then(data => {
-    //   console.log(data);
-    //   this.props.actions.syncDB(data)
-    // })
+    fetch('http://localhost:8080/getAllEvents')
+    .then(res => res.json())
+    .then(data => {
+      console.log('getAllevents', data);
+      this.props.actions.syncDB(data)
+    })
+    .catch(err => console.log(err));
   }
   render() {
     return (
