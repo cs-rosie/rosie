@@ -1,5 +1,5 @@
 import React from 'react';
-import MainContent from './MainContainer';
+import MainContent from './MainContainer.jsx';
 import Header from './Header';
 
 const App = () =>

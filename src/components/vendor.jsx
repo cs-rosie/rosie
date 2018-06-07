@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const vendorComponent = props => {
   const myFetch = () => {
@@ -23,3 +24,10 @@ const vendorComponent = props => {
 
 
 export default vendorComponent;
+
+vendorComponent.propTypes = {
+  vendor: PropTypes.arrayOf({
+    name: PropTypes.string.isRequired,
+    logo: PropTypes.string.isRequired,
+  }).isRequired
+};

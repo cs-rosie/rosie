@@ -3,7 +3,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const calController = require('./controllers/calController');
 const slackController = require('./controllers/slackController');
-const db = require('./db');
 
 const PORT = 8080;
 const app = express();

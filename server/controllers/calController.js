@@ -1,4 +1,3 @@
-const moment = require('moment');
 const calUtils = require('../utils/calUtils');
 const db = require('../db');
 
@@ -10,7 +9,7 @@ module.exports = {
    */
   addEvents: (req, res, next) => {
     console.log('inside add events');
-    const calArr = req.body.map(obj => {
+    const calArr = req.body.map((obj) => {
       const result = {};
       result.description = obj.description;
       const inviteeData = calUtils.getInviteeData(JSON.stringify(obj.description));
@@ -56,11 +55,8 @@ module.exports = {
    * @params: req.body.firstName, req.body.lastName
    */
   intCheckIn: (req, res, next) => {
-    if (!req.body.email) {
-      return res.status(400).send('Did not have valid body');
-    }
-    const email = req.body.email;
-    // const lastName = req.body.lastName;
+    const { email } = req.body;
+    if (!email) res.status(400).send('Did not have valid body');
     db.find({ email }, null, (err, appt) => {
       if (err) res.status(500).send('Failed to find calObj in db');
       console.log(appt);
@@ -68,6 +64,4 @@ module.exports = {
       next();
     });
   },
-
-  
 };

@@ -1,27 +1,40 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const Appointment = props => {
-
-  const myFetch = (email) => {
-    fetch('http://localhost:8080/intCheckIn', {
-      method: 'POST', // or 'PUT'
-      body: JSON.stringify({email}), // data can be `string` or {object}!
-      headers: new Headers({
-        'Content-Type': 'application/json'
-      })
-    }).then(res => res.json())
-    .catch(error => console.error('Error:', error))
-    .then(response => console.log('Success:', response));
-  }
-  
+const Appointment = (props) => {
+  const { type, summary, email } = props.appointment;
+  const checkIn = (appointment) => {
+    fetch('http://localhost:8000/intCheckIn', {
+      method: 'POST',
+      body: {
+        email
+      },
+      mode: 'no-cors',
+    })
+      .then(res => res.json())
+      .then(() => { props.checkIn(appointment); });
+  };
   return (
-    <div className="Appointment" onClick={() => myFetch(props.appointment.email)} >
-      <div className="type">{ props.appointment.type }</div>
-      <div className="title">{ props.appointment.summary }</div>
-      <div className="email">{ props.appointment.email }</div>
+    <div
+      className="Appointment"
+      onClick={() => checkIn(props.appointment)}
+      onKeyPress={checkIn(props.appointment)}
+      role="button"
+      tabIndex="0"
+    >
+      <div className="type">{ type }</div>
+      <div className="title">{ summary }</div>
+      <div className="email">{ email }</div>
     </div>
   );
-
-}
-
+};
 export default Appointment;
+
+Appointment.propTypes = {
+  appointment: PropTypes.shape({
+    type: PropTypes.string.isRequired,
+    summary: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired
+  }).isRequired,
+  checkIn: PropTypes.func.isRequired
+};

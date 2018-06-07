@@ -1,5 +1,4 @@
 const { WebClient } = require('@slack/client');
-const bodyParser = require('body-parser');
 
 // An access token (from your Slack app or custom integration - xoxp, xoxb, or xoxa)
 const token = 'xoxp-365508166806-364753788149-365933617283-1d4b73ceec24308e6893fc0047da037c';
@@ -16,11 +15,13 @@ module.exports = {
   sendIntSlack: (req, res) => {
     console.log(res.locals.appt[0], 'this is the appointment in slack!!');
     const appt = res.locals.appt[0];
-    const slackMsg = `${appt.firstName} ${appt.lastName} has arrived for a ${appt.type} with ${appt.interviewer}`;
+    const slackMsg = `${appt.firstName} ${appt.lastName} has arrived for a ${appt.type} with ${
+      appt.interviewer
+    }`;
     console.log(slackMsg);
     web.chat
       .postMessage({ channel, text: slackMsg })
-      .then((result) => {
+      .then(result => {
         console.log(`Posting to channel ${channel} with id ${result.ts}`);
         res.send('ok');
       })
@@ -36,11 +37,11 @@ module.exports = {
       slackMsg = req.body.message;
     }
     web.chat
-    .postMessage({ channel, text: slackMsg })
-    .then((result) => {
-      console.log(`Posting to channel ${channel} with id ${result.ts}`);
-    })
-    .then(() => res.send('ok'))
-    .catch(console.error);
-  }
+      .postMessage({ channel, text: slackMsg })
+      .then(result => {
+        console.log(`Posting to channel ${channel} with id ${result.ts}`);
+      })
+      .then(() => res.send('ok'))
+      .catch(console.error);
+  },
 };
